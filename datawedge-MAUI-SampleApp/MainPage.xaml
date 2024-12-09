@@ -72,7 +72,12 @@
                 Clicked="OnDWGetActiveProfile"
                 HorizontalOptions="Center" />
 
+            <Button Text="Go to Page 1" Clicked="Button_Clicked" />
+            <Button Text="Go to Page 2" />
+            <Button Text="Go to Page 3" />
+            <Button Text="Go to Page 4" />
         </VerticalStackLayout>
+            
     </ScrollView>
 
 </ContentPage>

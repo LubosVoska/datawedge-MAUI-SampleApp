@@ -49,5 +49,10 @@ public partial class MainPage : ContentPage
         WeakReferenceMessenger.Default.Send("33");
         WeakReferenceMessenger.Default.Send("GETTING ACTIVE PROFILE");
     }
+
+    private async void Button_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Page1());
+    }
 }
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="datawedge_MAUI_SampleApp.Page1"
+             Title="Umiestnenia položky"
+             Loaded="ContentPage_Loaded"
+             Unloaded="ContentPage_Unloaded">
+    <StackLayout Padding="20">
+
+        <Label Text="{Binding RegCis}" 
+           FontSize="22" 
+           FontAttributes="Bold"
+           HorizontalOptions="Center"  />
+
+        <Label Text="{Binding Name}" 
+           FontSize="20" 
+           HorizontalOptions="Center"  />
+
+        <!-- Spinner -->
+        <ActivityIndicator x:Name="Spinner" 
+                           IsVisible="False" 
+                           IsRunning="False" 
+                           Color="Blue" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+        
+        <!-- Table Headers -->
+        <Grid Padding="10" Margin="0,10,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Umiesnenie" FontAttributes="Bold" Grid.Column="0" />
+            <Label Text="Množstvo" FontAttributes="Bold" HorizontalTextAlignment="End" Grid.Column="1" />
+        </Grid>
+
+        <!-- Line Separator -->
+        <BoxView HeightRequest="1" BackgroundColor="Gray" Margin="0,0,0,10" />
+
+        <CollectionView x:Name="DataCollectionView" 
+                        ItemsSource="{Binding DataItems}"
+                        SelectionMode="Single" 
+                        SelectionChanged="OnItemSelected"
+                        VerticalOptions="FillAndExpand"
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" BackgroundColor="{Binding Prednastavene, Converter={StaticResource PrednastaveneToColorConverter}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Header: Umiesnenie Kód -->
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding UmiesnenieKod}" FontAttributes="Bold" />
+
+                        <!-- Quantity: Množstvo -->
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Mnozstvo, StringFormat='{}{0:N3}'}" HorizontalTextAlignment="End" />
+
+                        <!-- Description: Umiesnenie -->
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Umiesnenie}" Grid.ColumnSpan="2" TextColor="Gray" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

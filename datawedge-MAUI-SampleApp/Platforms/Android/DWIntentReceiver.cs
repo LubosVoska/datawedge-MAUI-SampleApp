@@ -44,7 +44,8 @@ namespace datawedge_MAUI_SampleApp.Platforms.Android
                     String bc_type = intent.Extras.GetString("com.symbol.datawedge.label_type");
                     String bc_data = intent.Extras.GetString("com.symbol.datawedge.data_string");
 
-                    WeakReferenceMessenger.Default.Send(bc_type + " " + bc_data);
+                    //WeakReferenceMessenger.Default.Send(bc_type + " " + bc_data);
+                    WeakReferenceMessenger.Default.Send(bc_data);
                 }
                 else if (intent.HasExtra("com.symbol.datawedge.api.RESULT_GET_ACTIVE_PROFILE"))
                 {
